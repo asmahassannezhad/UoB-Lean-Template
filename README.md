@@ -176,7 +176,7 @@ When it is ready, open a **Pull Request** on GitHub to merge it into `main`.
 | The build is very slow | Run `lake exe cache get` **before** `lake build`; use a **4-core** Codespace. |
 | Editor is sluggish | Avoid `import Mathlib`; import only the modules you need. |
 | Nothing happens on first open | The first build downloads the toolchain and Mathlib — this can take a few minutes. Watch the bottom status bar and be patient. |
-| Lean **InfoView / proof panel does not open** on the right | Make sure the `.lean` file is selected, then press **`Ctrl + Shift + Enter`** to open **Infoview: Toggle Infoview**. |
+| Lean **InfoView / proof panel does not open** on the right | With the `.lean` file open, click the **Lean `∀` icon** in the top-right of the editor and choose the option to open/toggle **InfoView**. |
 ---
 
 ### Windows computer-lab error: `Access is denied (os error 5)`
