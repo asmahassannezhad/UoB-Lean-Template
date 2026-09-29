@@ -109,9 +109,19 @@ Codespaces is the supported route, but you can also work on your own machine.
 
 - **VS Code** — <https://code.visualstudio.com>
 - **Git** — <https://git-scm.com>
-- The **Lean 4** extension (as in step 4 above). On first use it installs Lean
+- The **Lean 4** extension (as in step 4 above). On first use, it installs Lean
   itself via `elan`; you can also follow the
   [official Lean quickstart](https://docs.lean-lang.org/lean4/doc/quickstart.html).
+
+  > **Important:** After installing Lean/Elan, **close VS Code completely and reopen it** before continuing. This allows the terminal to recognise the newly installed `elan`, `lean`, and `lake` commands.
+
+Then open a **new terminal in VS Code** and check that Lake is available:
+<br>
+```bash
+lake --version
+elan --version
+```
+
 
 ### 2. Clone your repository
 
@@ -168,6 +178,47 @@ When it is ready, open a **Pull Request** on GitHub to merge it into `main`.
 | Nothing happens on first open | The first build downloads the toolchain and Mathlib — this can take a few minutes. Watch the bottom status bar and be patient. |
 
 ---
+
+### Windows computer-lab error: `Access is denied (os error 5)`
+ 
+If `lake exe cache get` downloads the Lean toolchain but then shows an error similar to:
+ 
+```text
+error: could not rename temp toolchain directory
+info: caused by: Access is denied. (os error 5)
+```
+ 
+follow these steps:
+ 
+1. **Close VS Code completely.**
+ 
+2. Open **Windows PowerShell**.
+ 
+3. Check the Lean toolchain folders:
+ 
+```powershell
+Get-ChildItem "$env:USERPROFILE\.elan\toolchains"
+```
+ 
+4. Look for an incomplete folder whose name ends in `.tmp`, for example:
+ 
+```text
+leanprover--lean4---v4.32.tmp
+```
+ 
+5. Remove **only the folder ending in `.tmp`**. For example:
+ 
+```powershell
+Remove-Item -Recurse -Force "$env:USERPROFILE\.elan\toolchains\leanprover--lean4---v4.32.tmp"
+```
+ 
+> **Important:** Your version number may be different. Remove only the incomplete folder ending in `.tmp`. **Do not remove your other installed Lean toolchains.**
+ 
+6. Reopen **VS Code**, open your project folder, open a new terminal, and run:
+ 
+```powershell
+lake exe cache get
+```
 
 ## Getting help
 
