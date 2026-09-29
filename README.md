@@ -115,7 +115,7 @@ Codespaces is the supported route, but you can also work on your own machine.
 
 ### 2. Clone your repository
 
-Find the URL on your repository page under **`Code` → `Local` → `HTTPS`**, then:
+Find the URL on your repository page under the **green `Code` button above the list of files → `HTTPS`**, then:
 
 ```bash
 git clone <repository-url>
