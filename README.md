@@ -221,6 +221,7 @@ lake exe cache get
 - Bring broken proofs to the **class sessions / drop-in**.
 - The Lean community **Zulip** — the `#new members` stream is very
   welcoming: <https://leanprover.zulipchat.com>
+  Please note that the forum has a no-AI policy on the messages you post there, so make sure you write your messages yourself.
 - Recommended references (see the course handbook): **Mathematics in Lean** and
   **A Glimpse of Lean**.
 
