@@ -7,7 +7,7 @@ formalisation project. It comes **pre-configured with Lean 4 and Mathlib**, so
 you can start proving straight away — no local installation required.
 
 The quickest way to get going is **GitHub Codespaces** (everything runs in your
-browser). If you would rather work on your own laptop, see
+browser). You can also set things up to work on your own laptop, which can be more comfortable; see
 [Working locally](#working-locally-in-vs-code-optional) at the end.
 
 ---
