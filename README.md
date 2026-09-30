@@ -26,11 +26,7 @@ Click the green **`Use this template`** button (top-right of this page) →
 
 ### 2. Open your new repository in a Codespace
 
-On your new repository, click **`Code` → `Codespaces`**.
-
-### 3. Choose a 4-core machine
-
-At the top-right of the Codespaces tab, choose **`New with options…`** (not the
+On your new repository, click **`Code` → `Codespaces`**. At the top-right of the Codespaces tab, choose **`New with options…`** (not the
 default green button), set **`Machine type`** to **`4-core`**, then click
 **`Create codespace`**.
 
@@ -39,7 +35,7 @@ default green button), set **`Machine type`** to **`4-core`**, then click
 > faster but use your monthly Codespaces quota more quickly — the **GitHub
 > Student Developer Pack** raises that quota.
 
-### 4. Install the Lean 4 extension
+### 3. Install the Lean 4 extension
 
 When VS Code opens in the browser, open the **Extensions** panel (the squares
 icon in the left bar, or press `Ctrl`/`Cmd` + `Shift` + `X`), search for
@@ -49,7 +45,7 @@ icon in the left bar, or press `Ctrl`/`Cmd` + `Shift` + `X`), search for
 > [!WARNING]
 > Do **not** install the older `lean` (Lean 3) extension.
 
-### 5. Open a terminal and source your profile
+### 4. Open a terminal and source your profile
 
 Open the integrated terminal (**`Terminal` → `New Terminal`**). If `lean` or
 `lake` are reported as *command not found*, put them on your `PATH`:
@@ -58,7 +54,7 @@ Open the integrated terminal (**`Terminal` → `New Terminal`**). If `lean` or
 source ~/.profile
 ```
 
-### 6. Check that Lean and Elan are installed
+### 5. Check that Lean and Elan are installed
 
 ```bash
 lean --version
@@ -68,7 +64,7 @@ elan --version
 You should see version numbers for both. If you get *command not found*, re-run
 `source ~/.profile` (or open a fresh terminal) and try again.
 
-### 7. Download the cached dependencies and build
+### 6. Download the cached dependencies and build
 
 ```bash
 lake exe cache get   # download a prebuilt Mathlib (the big time-saver)
@@ -79,7 +75,7 @@ lake build           # build the project
 > `lake exe cache get` downloads Mathlib **already compiled**. Always run it
 > first — building Mathlib from source can take a very long time.
 
-### 8. Check it works, and start editing
+### 7. Check it works, and start editing
 
 1. Open any `.lean` file in the project's source folder (the capitalised folder
    next to `lakefile.toml`).
