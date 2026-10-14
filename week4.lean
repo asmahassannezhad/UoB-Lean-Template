@@ -4,10 +4,7 @@
   MATH30024 · Theme 3B · Mathematical Formalisation with Lean
 
   HOW TO USE THIS FILE
-  1. Go to  https://live.lean-lang.org
-  2. Select everything already in the editor and delete it.
-  3. Paste this whole file in.
-  4. Click on any line: the goal state appears in the panel on the right.
+  Click on any line: the goal state appears in the panel on the right.
 
   Mathlib is already loaded on that site, so `import Mathlib` is fine here.
   In your own project, import only the parts you need — importing all of
