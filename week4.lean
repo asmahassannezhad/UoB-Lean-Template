@@ -169,7 +169,7 @@ example : ∃ n : ℕ, n > 5 := by
 -- Proved, by supplying the witness:
 example : ∃ n : ℕ, n > 5 := by
   use 6
-  -- If Lean says the goal is still open, add `norm_num` on the next line.
+  omega
 
 
 /-! ## 10. Typing the symbols
