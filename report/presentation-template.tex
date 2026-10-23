@@ -1,1 +1,156 @@
+% =========================================================
+%  PRESENTATION TEMPLATE — Theme 3B, Mathematical Formalisation with Lean
+%
+%  Using this is optional. If you already have a way of making
+%  slides you are happy with, use that. This is only here to save you
+%  the setup time.
+%
+%  Compile with xelatex, not pdflatex. The Lean symbols need it.
+%  There is no LaTeX in the Codespace, so the easy route is Overleaf:
+%  sign in at overleaf.com/edu/bristol, upload this file, then set
+%  Menu -> Compiler -> XeLaTeX.
+%
+%  Uses the `metropolis' beamer theme, which Overleaf, TeX Live and
+%  MacTeX all have.
+%
+%  There is no running order here. How you build the talk is up to
+%  you. The slides at the end show what you can use; delete them.
+%
+%  Change anything you like: colours, theme, fonts, the boxes.
+%
+%  A frame with Lean code in it must say [fragile].
+% =========================================================
+\documentclass[11pt,aspectratio=169]{beamer}
+\usetheme[progressbar=frametitle]{metropolis}
+\setbeamertemplate{navigation symbols}{}
+
+% ---- Colours. Change these and the whole talk changes. ----
+\usepackage{xcolor}
+\definecolor{talkmain}{HTML}{2F6FB3}
+\definecolor{talkaccent}{HTML}{F2A900}
+\definecolor{talktext}{HTML}{22303A}
+\setbeamercolor{frametitle}{bg=talkmain, fg=white}
+\setbeamercolor{progress bar}{fg=talkaccent, bg=talkaccent!25}
+\setbeamercolor{title separator}{fg=talkaccent}
+\setbeamercolor{normal text}{fg=talktext}
+\setbeamercolor{alerted text}{fg=talkmain}
+
+\usepackage{fontspec}
+\setmonofont{DejaVu Sans Mono}[Scale=0.8]
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+
+% ---- Lean code ----
+\definecolor{keywordcolor}{rgb}{0.4,0.1,0.5}
+\definecolor{commentcolor}{rgb}{0.3,0.5,0.3}
+\lstdefinelanguage{lean}{
+  keywords={theorem,lemma,by,induction,intro,exact,apply,rw,rfl,simp,ring,
+    linarith,omega,decide,sorry,open,import,namespace,end},
+  sensitive=true, comment=[l]{--}, morecomment=[s]{/-}{-/},
+  keywordstyle=\color{keywordcolor}\bfseries,
+  commentstyle=\color{commentcolor}\itshape,
+}
+\lstset{language=lean, basicstyle=\ttfamily\footnotesize, columns=fullflexible,
+  keepspaces=true, breaklines=true}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+
+% ---- Three boxes, ready to use. Examples at the end of the file. ----
+% \begin{keybox}{Title}  ... \end{keybox}   — the point of the slide
+\newtcolorbox{keybox}[1]{enhanced, colback=talkmain!6, colframe=talkmain,
+  boxrule=0.8pt, arc=1mm, left=2mm, right=2mm, top=1.2mm, bottom=1.2mm,
+  title={#1}, coltitle=white, colbacktitle=talkmain, fonttitle=\bfseries\small}
+% \begin{notebox} ... \end{notebox}         — an aside, no title
+\newtcolorbox{notebox}{enhanced, colback=talkaccent!12, colframe=talkaccent!70!black,
+  boxrule=0.6pt, arc=1mm, left=2mm, right=2mm, top=1.2mm, bottom=1.2mm}
+% \begin{plainbox} ... \end{plainbox}       — a quiet frame around anything
+\newtcolorbox{plainbox}{enhanced, colback=white, colframe=black!25,
+  boxrule=0.5pt, arc=1mm, left=2mm, right=2mm, top=1.2mm, bottom=1.2mm}
+
+\title{<Title of your result>}
+\subtitle{<one line saying what you formalised>}
+\author{<Name> \and <Name> \and <Name>}
+\institute{Perspectives in Mathematics --- Theme 3B}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ---------------------------------------------------------
+%  Your slides go here. One slide is
+%
+%      \begin{frame}{Title}  ...your content...  \end{frame}
+%
+%  Leave the braces empty for a slide with no title. A slide with
+%  Lean code on it must say [fragile]:
+%
+%      \begin{frame}[fragile]{Title}
+%
+%  Add [fragile] when you paste the code in, not before --- an empty
+%  [fragile] frame gives a strange LaTeX error.
+% ---------------------------------------------------------
+
+% =========================================================
+%  The slides below are just a show of what you can use.
+%  Copy what is useful and DELETE THEM.
+% =========================================================
+
+\begin{frame}{What you can use (delete these slides)}
+  Three boxes. The colours are only a suggestion:
+  \begin{keybox}{Theorem}
+    For every $n \in \mathbb{N}$, \quad
+    $\displaystyle\sum_{k=0}^{n-1}(2k+1) = n^2$.
+  \end{keybox}
+  \begin{notebox}
+    In $\mathbb{N}$, subtraction truncates: $2 \cdot 0 - 1 = 0$.
+  \end{notebox}
+  \begin{plainbox}
+    \centering A quiet frame around a picture, or anything else.
+  \end{plainbox}
+\end{frame}
+
+% Note the [fragile] below: any slide holding Lean code needs it.
+\begin{frame}[fragile]{Lean code}
+\begin{lstlisting}
+theorem my_result (n : ℕ) : ∑ k ∈ range n, (2 * k + 1) = n ^ 2 := by
+  induction n with
+  | zero => simp
+  | succ d hd => sorry
+\end{lstlisting}
+  A Lean name inside a sentence: \lean{Finset.sum\_range\_succ}.
+\end{frame}
+
+\begin{frame}{Two columns, and a table}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+      \textbf{On paper.} The induction reduces to one line of algebra.
+    \column{0.5\textwidth}
+      \textbf{In Lean.} The same step, with every type made explicit.
+  \end{columns}
+  \vspace{1em}
+  \begin{center}
+  \small
+  \begin{tabular}{@{}lll@{}}
+  \toprule
+  \textbf{Declaration} & \textbf{Lead} & \textbf{Built or reused?} \\
+  \midrule
+  \lean{step}      & <name> & built (\lean{ring}) \\
+  \lean{main\_thm} & <name> & built on \lean{sum\_range\_succ} \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{}
+  \begin{center}
+    {\Large <one big line: the sentence you want them to remember>}
+  \end{center}
+\end{frame}
+
+\end{document}
 
