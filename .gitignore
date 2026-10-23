@@ -1,1 +1,15 @@
 /.lake
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
